@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+    get 'orders/show'
+  end
   #管理者用
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -8,6 +12,8 @@ Rails.application.routes.draw do
     get '' => 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit]
+    resources :orders, only: [:show]
   end
 
   #顧客用
