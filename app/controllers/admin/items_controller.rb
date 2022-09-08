@@ -1,8 +1,9 @@
 class Admin::ItemsController < ApplicationController
   def index
+    @item
   end
 
-  def shoe
+  def show
   end
 
   def edit
