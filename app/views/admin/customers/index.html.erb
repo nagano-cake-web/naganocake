@@ -3,17 +3,18 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">会員ID</th>
-        <th scope="col">氏名</th>
+        <th scope="col">会員ID</th><th>
+        <th scope="col">氏名</th><th>
         <th scope="col">メールアドレス</th>
         <th scope="col">ステータス</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= @customer.id %></td>
+        <td><%= @customer.last_name, @customer.first_name %></td>
+        <td><%= @customer.email %></td>
+        <td><%= @customer.is_active %></td>
       </tr>
     </tbody>
   </table>
