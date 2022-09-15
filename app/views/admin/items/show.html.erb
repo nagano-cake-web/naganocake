@@ -13,7 +13,7 @@
 <h4>ジャンル</h4>
 <%= @item.genre_id %>
 <h4>税込価格（税抜価格）</h4>
-(<%= @item.price %>)円
+<%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円
 <h4>販売ステータス</h4>
 <%= @item.is_active %>
-<%= link_to "編集する", edit_admin_item_path(@item.id %>
+<%= link_to "編集する", edit_admin_item_path(@item.id) %>

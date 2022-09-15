@@ -11,11 +11,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @homes.each do |home| %>
+      <% @orders.each do |home| %>
       <tr>
         <td><%= Order.created_at %></td>
         <td><%= Order.name %></td>
-        <td><%= Order_detail.amount %></td>
+        <td></td>
         <td><%= Order.status %></td>
       </tr>
       <% end %>

@@ -3,5 +3,5 @@ class Genre < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
 
-  has_many :items, dependent: :destroy
+  has_many :item, dependent: :destroy
 end
