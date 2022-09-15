@@ -20,6 +20,7 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @items = Genre.all
   end
 
   def update
