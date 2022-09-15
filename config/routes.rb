@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   }
 
     get '/' => 'homes#top'
-    get '/about'
+    get '/about' => 'homes#about'
     resources :items, only: [:index, :show]
     resources :registrations, only: [:new, :create]
     resources :sessions, only: [:new, :create, :destroy]
