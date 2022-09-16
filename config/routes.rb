@@ -19,11 +19,11 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-    get '/' => 'homes#top'
+    #root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :items, only: [:index, :show]
-    resources :registrations, only: [:new, :create]
-    resources :sessions, only: [:new, :create, :destroy]
+    #resources :registrations, only: [:new, :create]
+    #resources :sessions, only: [:new, :create, :destroy]
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
