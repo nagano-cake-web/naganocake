@@ -1,3 +1,22 @@
 <h1>注文履歴詳細</h1>
 
+<p>購入者</p>
+<%= Order.name %>
+<p>注文日</p>
+<%= Order.create_at %>
+<p>配送先</p>
+<%= Order.address %>
+<p>支払方法</p>
+<%= Order.payment_method %>
+<p>注文ステータス</p>
+<% @orders.each do |order| %>
+  <p>商品名<%= Item.name %></p>
+  <p>単価(税込)<%= Item.add_tax_price %></p>
+  <p>数量<%= CartItem.amount %></p>
+  <p>小計<%= cart_item.subtotal %></p>
+  <p>製作ステータス</p>
+<% end %>
 
+<p>商品合計<%= Order.total_payment %></p>
+<p>送料<%= Order.shipping_cost %></p>
+<p>請求金額合計<%= </p>

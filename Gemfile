@@ -59,3 +59,4 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 gem 'kaminari','~> 1.2.1'
+gem "enum_help"
