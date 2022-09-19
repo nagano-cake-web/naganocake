@@ -17,6 +17,9 @@
   <p>製作ステータス</p>
 <% end %>
 
-<p>商品合計<%= Order.total_payment %></p>
+<% @order_amount.each do |order| %>
+<p>商品合計<%= Order_datails.item.subtotal %></p>
+<% @total += Order_datails.subtotal %>
+<% end %>
 <p>送料<%= Order.shipping_cost %></p>
-<p>請求金額合計<%= </p>
+<p>請求金額合計</p>
