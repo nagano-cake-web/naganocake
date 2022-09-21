@@ -15,4 +15,5 @@ class Public::CustomersController < ApplicationController
 
   def customer_paramd
     params.require(:customer).permit(:name,)
+  end
 end
