@@ -1,0 +1,17 @@
+<h2>商品一覧</h2>
+<div>
+  <%= @genre each do |genre| %>
+    <div>
+      <%= @genre.name %>
+    </div>
+  <% end %>
+</div>
+<div>
+  <%= @items each do |item| %>
+    <div>
+      <%= image_tag item.get_image %>
+      <%= @items.name %>
+      <%= @items.price %>
+    </div>
+  <% end %>
+</div>
