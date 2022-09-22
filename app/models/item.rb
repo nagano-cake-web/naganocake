@@ -17,6 +17,6 @@ class Item < ApplicationRecord
   end
 
   def add_tax_price
-    (self.price * 1.10).floor
+    (price * 1.10).floor
   end
 end

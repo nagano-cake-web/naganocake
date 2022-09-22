@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   #顧客用
 
 
-    #root to: 'homes#top'
+    root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
