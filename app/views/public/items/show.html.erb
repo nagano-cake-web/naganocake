@@ -1,0 +1,17 @@
+<div>
+  <%= @genre each do |genre| %>
+    <div>
+      <%= @genre.name %>
+    </div>
+  <% end %>
+</div>
+
+<%= image_tag item.get_image %>
+<div>
+  <%= @item.name %>
+  <%= @item.introduction %>
+  <%= @item.add_tax_price %>
+  <div>
+    <%= f.select :amount, *[1..10] %>
+  </div>
+</div>
