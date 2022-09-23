@@ -1,4 +1,5 @@
 <h2>ショッピングカート</h2>
+<%= current_user.cart_items.destory_all 'カートを空にする' %>
 <div>
   <p>商品</p>
   <p>単価(税込み)</p>
@@ -17,7 +18,7 @@
   </div>
   <div>
     <%= form_with model: @cart_item do |f| %>
-      <%= 
+      <%= f.hidden_field :amount, :value => @cart_item.id %>
       <%= f.submit '変更' %>
     <% end %>
   </div>

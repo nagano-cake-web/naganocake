@@ -8,7 +8,7 @@
 
 <%= image_tag item.get_image %>
 <%= form_with model: @item do |item| %>
-<%= f.hidden_field
+<%= f.hidden_field :amount, :value => @item.id %>
 <div>
   <%= @item.name %>
   <%= @item.introduction %>
@@ -17,4 +17,5 @@
     <%= f.select :amount, *[1..10] %>
     <%= f.submit 'カートに入れる' %>
   </div>
+<% end %>
 </div>
