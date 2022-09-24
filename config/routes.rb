@@ -19,10 +19,8 @@ Rails.application.routes.draw do
   end
 
   #顧客用
-
-
-    root to: 'homes#top'
-    get '/about' => 'homes#about'
+    root to: 'public/homes#top'
+    get '/about' => 'public/homes#about'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
     get '/customers/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
