@@ -1,6 +1,8 @@
 class Public::OrdersController < ApplicationController
-  
+
   def new
-    @customer = Customer.find()
+    @order = Order.new
+    @orders = Order.all
+    @customer = Customer.find(params[:id])
   end
 end
