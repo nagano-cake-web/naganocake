@@ -13,12 +13,13 @@
 <div>お届け先
   <div>
     <%= f.label :Customer.address, "ご自身の住所" %>
-    <%= f.radio_button :Customer.address %>
+    <%= f.radio_button :current_address %>
   </div>
   <div>
     <%= f.label :address, "登録済住所から選択" %>
     <%= f.radio_button :address %>
-    <%= f.collection_select :address, @orders, :id, :address %>
+    <%= f.hidden_field :address, :value => order.id %>
+    <%= f.select :address_id , options_from_collection_for_select(Address.all, :id, :address_display) %>
   </div>
   <div>
     <%= f.label :address, "新しいお届け先" %>
@@ -26,7 +27,7 @@
       <%= f.text_field :postal_code %>
       <%= f.text_field :address %>
       <%= f.text_field :name %>
-      <%= f.submit "確認画面へ進む" 
+      <%= f.submit "確認画面へ進む" %>
     <% end %>
   </div>
 </div>
