@@ -6,6 +6,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
+    @genre = Genre.all
     @item = Item.find(params[:id])
   end
 
@@ -23,4 +24,9 @@ class Public::ItemsController < ApplicationController
     end
   end
 
+  private
+
+  def item_params
+    params.require(:item).permit(:genre_id, :name, :introduction, :price, :is_active)
+  end
 end

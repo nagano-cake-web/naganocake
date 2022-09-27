@@ -1,13 +1,13 @@
 <div>
-  <%= @genre.each do |genre| %>
+  <%= @genre each do |genre| %>
     <div>
       <%= @genre.name %>
     </div>
   <% end %>
 </div>
 
-<%= image_tag @item.get_image %>
-<%= form_with model: @item, url: items_path do |item| %>
+<%= image_tag item.get_image %>
+<%= form_with model: @item do |item| %>
 <%= f.hidden_field :amount, :value => @item.id %>
 <div>
   <%= @item.name %>

@@ -1,17 +1,17 @@
 <h2>商品一覧</h2>
 <div>
-  <% @genre.each do |genre| %>
+  <%= @genre each do |genre| %>
     <div>
       <%= @genre.name %>
     </div>
   <% end %>
 </div>
 <div>
-  <% @items.each do |item| %>
+  <%= @items each do |item| %>
     <div>
-      <%= link_to 'image_tag item.get_image', item_show_path(item.id) %>
+      <%= image_tag item.get_image %>
       <%= @items.name %>
-
+      <%= @items.price %>
     </div>
   <% end %>
 </div>

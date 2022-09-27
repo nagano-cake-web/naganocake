@@ -21,9 +21,13 @@ Rails.application.routes.draw do
   #顧客用
     root to: 'public/homes#top'
     get '/about' => 'public/homes#about'
-    resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update]
+    get '/items' => 'public/items#index'
+    get '/items/:id' => 'public/items#show', as: 'item_show'
+    get '/customers' => 'public/customers#show'
+    get '/customers/information/edit' => 'public/customers#edit'
+    get '/customers/information' => 'public/customers#update'
     get '/customers/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    get '/customers/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
