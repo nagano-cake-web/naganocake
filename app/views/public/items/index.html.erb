@@ -1,15 +1,17 @@
-<h2>商品一覧</h2>
+<h4>ジャンル検索</h4>
 <div>
-  <% @genre.each do |genre| %>
+  <% @item.each do |item| %>
     <div>
-      <%= @genre.name %>
+      <%= @item.name %>
     </div>
   <% end %>
 </div>
+<h2>商品一覧</h2>
+
 <div>
   <% @items.each do |item| %>
     <div>
-      <%= link_to 'image_tag item.get_image', item_show_path(item.id) %>
+      <%= link_to image_tag(item.get_image), item_show_path(item.id) %>
       <%= @items.name %>
 
     </div>
