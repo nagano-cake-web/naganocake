@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
 
-  has_many :order_datail, dependent: :destroy
+  has_many :order_datails, dependent: :destroy
   belongs_to :customer
 
   enum payment_method: { credit_card: 0, transfer: 1 }
