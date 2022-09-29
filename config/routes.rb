@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
     get '/orders/new' => 'public/orders#new'
     post '/orders/comfirm' => 'public/orders#comfirm'
+    get '/orders/complete' => 'public/orders#complete'
     post '/orders' => 'public/orders#create', as: 'order_create'
     get '/orders' => 'public/orders#index'
     get '/orders/:id' => 'public/orders#show', as: 'order_show'

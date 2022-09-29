@@ -8,7 +8,7 @@
 
 <%= image_tag @item.get_image %>
 <%= form_with model: @item, url: items_path do |item| %>
-<%= f.hidden_field :amount, :value => item.id %>
+<%= f.hidden_field :Order_details.amount, :value => Order_details.amount %>
 <div>
   <%= @item.name %>
   <%= @item.introduction %>
