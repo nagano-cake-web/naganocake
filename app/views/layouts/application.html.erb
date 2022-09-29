@@ -18,10 +18,10 @@
             <span class="border border-dark">LOGO</span>
           </div>
           <div class="navbar-nav ml-auto">
-            <% if admin_signed_in? %>
+            <% if customer_signed_in? %>
             <div class="row">
               <li class="nav-item">
-                <%= link_to "商品一覧", admin_items_path %>
+                <%= link_to "マイページ", admin_items_path %>
               </li>
               <li class="nav-item">
                 <%= link_to "会員一覧", admin_customers_path %>

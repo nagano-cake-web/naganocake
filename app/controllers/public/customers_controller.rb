@@ -14,6 +14,17 @@ class Public::CustomersController < ApplicationController
     redirect_to customer_path(customer.id)
   end
 
+  def unsubscribe
+    @customer = Customer.find_by(email: params[:customer][:email])
+  end
+
+  def withdraw
+    @customer = Customer.find_by(email: params[:customer][:email])
+    @customer.update(is_deleted: false)
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def customer_paramd
