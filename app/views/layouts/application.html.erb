@@ -17,23 +17,23 @@
           <div class="navbar-brand">
             <span class="border border-dark">LOGO</span>
           </div>
+          <% if customer_signed_in? %>
+          <div>ようこそ、<%= current_customer.last_name %>さん！</div>
+          <% end %>
           <div class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <div class="row">
               <li class="nav-item">
-                <%= link_to "マイページ", admin_items_path %>
+                <%= link_to "マイページ", customer_show_path(current_customer.id) %>
               </li>
               <li class="nav-item">
-                <%= link_to "会員一覧", admin_customers_path %>
+                <%= link_to "商品一覧", items_path %>
               </li>
               <li class="nav-item">
-                <%= link_to "注文履歴一覧", admin_path %>
+                <%= link_to "カート", cart_items_path %>
               </li>
               <li class="nav-item">
-                <%= link_to "ジャンル一覧", admin_genre_path %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
               </li>
               <% else %>
               <li class="nav-item">
