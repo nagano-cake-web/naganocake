@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = Item.all
     @total = 0
-    @cart_item = CartItem.find(params[:id])
+    @cart_item = current_customer.cart_items
   end
 
   def updete
