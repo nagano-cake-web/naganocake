@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
     customer.save
     redirect_to customer_path(customer.id)
   end
