@@ -1,6 +1,6 @@
 <h1>マイページ</h1>
 <h4>登録情報</h4>
-<%= link_to "編集する", edit_customer_path(@customer.id) %>
+<%= link_to "編集する", customer_edit_path(current_customer.id) %>
 
 <div>
   氏名<%= @customer.last_name %> <%= @customer.first_name %>
@@ -26,5 +26,5 @@
   メールアドレス<%= @customer.email %>
 </div>
 
-<h4>配送先<%= link_to "一覧を見る", address_path(current_user.id) %></h4>
-<h4>注文履歴<%= link_to "一覧を見る", order_path(current_user.id) %></h4>
+<h4>配送先<%= link_to "一覧を見る", addresses_path(current_customer.id) %></h4>
+<h4>注文履歴<%= link_to "一覧を見る", orders_path(current_customer.id) %></h4>

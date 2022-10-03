@@ -1,5 +1,5 @@
 <div>
-  <%= @genre.each do |genre| %>
+  <% @genre.each do |genre| %>
     <div>
       <%= @genre.name %>
     </div>
@@ -7,8 +7,8 @@
 </div>
 
 <%= image_tag @item.get_image %>
-<%= form_with model: @item, url: items_path do |f| %>
-<%= f.hidden_field :Order_details.amount, :value => Order_details.amount %>
+<%= form_with model: @cart_item, url: cart_item_create_path do |f| %>
+<%= f.hidden_field :item_id, :value => @item.id %>
 <div>
   <%= @item.name %>
   <%= @item.introduction %>
