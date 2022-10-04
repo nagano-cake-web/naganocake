@@ -15,13 +15,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find_by(email: params[:customer][:email])
+    @customer = Customer.find(current_customer.id)
   end
 
   def withdraw
-    @customer = Customer.find_by(email: params[:customer][:email])
-    @customer.update(is_deleted: false)
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_deleted: true)
     reset_session
+    flash[:notice] = "ありがとうございました。またのご利用をお待ちしております。"
     redirect_to root_path
   end
 
