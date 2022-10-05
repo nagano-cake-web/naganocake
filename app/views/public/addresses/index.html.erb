@@ -28,13 +28,13 @@
   <div>
     <% @addresses.each do |address| %>
       <div>
-        <%= Address.postal_code %>
+        <%= address.postal_code %>
       </div>
       <div>
-        <%= Address.address %>
+        <%= address.address %>
       </div>
       <div>
-        <%= Address.name %>
+        <%= address.name %>
       </div>
       <div>
         <%= link_to "編集する", edit_addresses_path %>

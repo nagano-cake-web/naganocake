@@ -21,12 +21,13 @@ Rails.application.routes.draw do
   #顧客用
     root to: 'public/homes#top'
     get '/about' => 'public/homes#about'
+
     get '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show', as: 'item_show'
 
     get '/customers' => 'public/customers#show', as: 'customer_show'
     get '/customers/information/edit' => 'public/customers#edit', as: 'customer_edit'
-    patch '/customers/information' => 'public/customers#update'
+    patch '/customers/information' => 'public/customers#update', as: 'customer'
     get '/customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
 

@@ -5,8 +5,10 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params)
-    @address.save
+    address = Address.new(address_params)
+    address.customer_id = current_customer.id
+    binding.pry
+    address.save
     redirect_to addresses_path
   end
 

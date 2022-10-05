@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
 
-<%= form_with model: @customer, url: customer_edit_path(current_customer.id) do |f| %>
+<%= form_with model: @customer, url: customer_path(current_customer.id) do |f| %>
   <h4>氏名</h4>
   <%= f.text_field :last_name %> <%= f.text_field :first_name %>
   <h4>フリガナ</h4>
@@ -14,6 +14,6 @@
   <h4>メールアドレス</h4>
   <%= f.text_field :email %>
 
-  <%= f.submit "編集内容を保存", method: :patch %>
+  <%= f.submit "編集内容を保存" %>
 <% end %>
 <%= link_to "退会する", unsubscribe_path(current_customer.id) %>
