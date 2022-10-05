@@ -15,6 +15,7 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if Item.find_by(name: params[:id])
+      b
       item += params[:item][:amout].to_i
       item.save
       redirect_to items_path

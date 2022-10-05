@@ -1,5 +1,9 @@
 class Public::OrdersController < ApplicationController
 
+  def index
+    @orders = Order.all
+  end
+
   def new
     @order = Order.new
     @customer = Customer.find(params[:id])
@@ -11,6 +15,11 @@ class Public::OrdersController < ApplicationController
     redirect_to new_order_path(current_user.id)
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @order = Order.all
+  end
+
   def comfirm
     @order = Order.new(order_params)
     @address = Address.find(params[:order][:address_id])
@@ -18,7 +27,7 @@ class Public::OrdersController < ApplicationController
     @order.address = @address.address
     @order.name = @address.name
   end
-  
+
   def complete
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
@@ -41,7 +50,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customers_id, :postal_code, :address, :name, 
+    params.require(:order).permit(:customers_id, :postal_code, :address, :name,
                                   :shipping_cost,:total_payment, :payment_method, :status)
   end
 end

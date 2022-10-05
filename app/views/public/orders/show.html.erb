@@ -1,0 +1,64 @@
+<div class="container px-5 px-sm-0">
+  <h2>注文履歴詳細</h2>
+
+  <div class="card-header">注文情報</div>
+  <table class="table table-bordered align-middle">
+    <thead>
+      <span>注文情報</span>
+      <tr class="table-secondary">
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>支払方法</th>
+        <th>ステータス</th>
+      </tr>
+      <tbody>
+        <tr>
+          <th><%= @order.create_at %></th>
+          <th><%= @order.address %></th>
+          <th><%= @order.payment_method %></th>
+          <th><%= @order.status %></th>
+        </tr>
+      </tbody>
+    </thead>
+  </table>
+
+  <div class="card-header">請求金額</div>
+  <table class="table table-bordered align-middle">
+    <thead>
+      <tr class="table-secondary">
+        <th>商品合計</th>
+        <th>配送料</th>
+        <th>ご請求額</th>
+      </tr>
+      <tbody>
+        <tr>
+          <th></th>
+          <th><%= @order.shipping_cost %></th>
+          <th><%= @order.total_payment %></th>
+        </tr>
+      </tbody>
+    </thead>
+  </table>
+
+  <div class="card-header">注文内容</div>
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-secondary">
+        <th>商品</th>
+        <th>単価（税込）</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+      <tbody>
+        <% @orders.each do |f| %>
+        <tr>
+          <th><%= order.name %></th>
+          <th><%= OrderDatails.add_tax_price %></th>
+          <th><%= order.amount %></th>
+          <th><%= order.subtotal %></th>
+          <% end %>
+        </tr>
+      </tbody>
+    </thead>
+  </table>
+</div>
