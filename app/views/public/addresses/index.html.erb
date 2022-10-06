@@ -37,8 +37,8 @@
         <%= address.name %>
       </div>
       <div>
-        <%= link_to "編集する", address_edit_path(@addre.id) %>
-        <%= link_to "削除する", address_path(@addre.id), method: :delete %>
+        <%= link_to "編集する", address_edit_path(address.id) %>
+        <%= link_to "削除する", address_destroy_path(address.id), method: :delete %>
       </div>
     <% end %>
   </div>

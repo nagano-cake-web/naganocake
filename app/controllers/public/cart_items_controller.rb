@@ -1,9 +1,8 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items = Item.all
     @total = 0
-    @cart_item = current_customer.cart_items
-    @cart_items = CartItem.find(params[:id])
+    @cart_items = current_customer.cart_items
+
   end
 
   def updete
@@ -20,11 +19,12 @@ class Public::CartItemsController < ApplicationController
 
   def create
      @cart_item = CartItem.new(cart_item_params)
+     @cart_item.customer_id = current_customer.id
     if Item.find_by(name: params[:id])
       cart_item += params[:item][:amout].to_i
       cart_item.save
       redirect_to items_path
-    elsif @cart_item.save
+    elsif @cart_item.save!
       redirect_to items_path
     else
       redirect_to items_path

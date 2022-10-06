@@ -2,7 +2,6 @@ class Public::AddressesController < ApplicationController
   def index
     @address = Address.new
     @addresses = Address.all
-    @addre = Address.find(params[:id])
   end
 
   def create
@@ -18,8 +17,8 @@ class Public::AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    address.update(address_params)
-    redirect_to addresses_path(address.id)
+    @address.update(address_params)
+    redirect_to addresses_path(@address.id)
   end
 
   def destroy
