@@ -9,6 +9,7 @@
 <%= image_tag @item.get_image %>
 <%= form_with model: @cart_item, url: cart_item_create_path do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>
+<%= f.hidden_field :customer_id, :value => @customer.id %>
 <div>
   <%= @item.name %>
   <%= @item.introduction %>
