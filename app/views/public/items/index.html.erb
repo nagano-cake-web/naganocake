@@ -1,19 +1,14 @@
-<h4>ジャンル検索</h4>
-<div>
-  <% @genre.each do |item| %>
-    <div>
-      <%= Genre.name %>
-    </div>
-  <% end %>
-</div>
-<h2>商品一覧</h2>
+<div class="container px-5 px-sm-0">
+  <h2>商品一覧</h2>
 
-<div>
-  <% @items.each do |item| %>
-    <div>
-      <%= link_to image_tag(item.get_image), item_show_path(item.id) %>
-      <%= Item.name %>
-
-    </div>
-  <% end %>
+  <div class="">
+    <% @items.each do |item| %>
+      <div>
+        <%= link_to image_tag(item.get_image), item_show_path(item.id) %>
+        <%= item.name %>
+        ￥<%= item.add_tax_price %>
+      </div>
+    <% end %>
+    <%= paginate @item %>
+  </div>
 </div>
