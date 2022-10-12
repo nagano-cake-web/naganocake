@@ -1,45 +1,42 @@
-<h2>配送先登録/一覧</h2>
-<div>
-  <%= form_with model: @address, url: address_create_path do |f| %>
-    <div>
-      <strong><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></strong>
-      <%= f.text_field :postal_code %>
-    </div>
-    <div>
-      <strong><%= f.label :address, "住所" %></strong>
-      <%= f.text_field :address %>
-    </div>
-    <div>
-      <strong><%= f.label :name, "宛名" %></strong>
-      <%= f.text_field :name %>
-    </div>
-    <%= f.submit "新規登録" %>
-  <% end %>
-</div>
-
-<div>
+<div class="container px-5 px-sm-0">
+  <h2>配送先登録/一覧</h2>
   <div>
-    <p>郵便番号</p>
-    <p>住所</p>
-    <p>宛名</p>
-    <p></p>
-  </div>
-
-  <div>
-    <% @addresses.each do |address| %>
+    <%= form_with model: @address, url: address_create_path do |f| %>
       <div>
-        <%= address.postal_code %>
+        <strong><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></strong>
+        <%= f.text_field :postal_code %>
       </div>
       <div>
-        <%= address.address %>
+        <strong><%= f.label :address, "住所" %></strong>
+        <%= f.text_field :address %>
       </div>
       <div>
-        <%= address.name %>
+        <strong><%= f.label :name, "宛名" %></strong>
+        <%= f.text_field :name %>
       </div>
-      <div>
-        <%= link_to "編集する", address_edit_path(address.id) %>
-        <%= link_to "削除する", address_destroy_path(address.id), method: :delete %>
-      </div>
+      <%= f.submit "新規登録", class: 'btn btn-success' %>
     <% end %>
   </div>
+
+  <table class="table table-bordered">
+    <thead>
+　    <tr class="table-secondary">
+　      <th>郵便番号</th>
+　      <th>住所</th>
+　      <th>宛名</th>
+　      <th></th>
+　    </tr>
+　    <tbody>
+　      <% @addresses.each do |address| %>
+　        <th><%= address.postal_code %></th>
+　        <th><%= address.address %></th>
+　        <th><%= address.name %></th>
+　        <th>
+　          <%= link_to "編集する", address_edit_path(address.id), class: 'btn btn-success' %>
+          　<%= link_to "削除する", address_destroy_path(address.id),  method: :delete, class: 'btn btn-danger' %>
+          </th>
+　      <% end %>
+　    </tbody>
+　  </thead>
+  </table>
 </div>

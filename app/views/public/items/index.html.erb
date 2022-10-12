@@ -2,9 +2,11 @@
   <h2>商品一覧</h2>
 
   <div class="">
-    <% @items.each do |item| %>
+    <% @items.first(8).each do |item| %>
       <div>
-        <%= link_to image_tag(item.get_image), item_show_path(item.id) %>
+        <%= link_to item_show_path(item.id) do %>
+          <%= image_tag item.get_image %>
+          <% end %>
         <%= item.name %>
         ￥<%= item.add_tax_price %>
       </div>

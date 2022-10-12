@@ -1,22 +1,16 @@
-<div>
-  <% @genre.each do |genre| %>
+<div class="container px-5 px-sm-0">
+  <%= image_tag @item.get_image %>
+  <%= form_with model: @cart_item, url: cart_item_create_path do |f| %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.hidden_field :customer_id, :value => @customer.id %>
+  <div>
+    <%= @item.name %>
+    <%= @item.introduction %>
+    <%= @item.add_tax_price %>
     <div>
-      <%= @genre.name %>
+      <%= f.select :amount, *[1..10] %>
+      <%= f.submit 'カートに入れる' %>
     </div>
   <% end %>
-</div>
-
-<%= image_tag @item.get_image %>
-<%= form_with model: @cart_item, url: cart_item_create_path do |f| %>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.hidden_field :customer_id, :value => @customer.id %>
-<div>
-  <%= @item.name %>
-  <%= @item.introduction %>
-  <%= @item.add_tax_price %>
-  <div>
-    <%= f.select :amount, *[1..10] %>
-    <%= f.submit 'カートに入れる' %>
   </div>
-<% end %>
 </div>

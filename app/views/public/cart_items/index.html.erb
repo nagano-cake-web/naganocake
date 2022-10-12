@@ -1,6 +1,8 @@
 <div class="container px-5 px-sm-0">
   <h2>ショッピングカート</h2>
-  <%= button_to "カートを空にする", cart_items_destroy_all_path, method: :delete %>
+  <div>
+    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" %>
+  </div>
   <table class="table table-bordered">
     <thead>
       <tr class="table-secondary">
@@ -14,11 +16,11 @@
       <tbody>
         <% @cart_items.each do |cart_item| %>
         <th>
-          <%#= image_tag cart_item.image %>
+          <%= image_tag cart_item.item.image, :size =>'100x100' %>
           <%= cart_item.item.name %>
         </th>
         <th>
-          <%#= @cart_items.add_tax_price %>
+          <%= cart_item.item.add_tax_price %>
         </th>
         <th>
           <%= form_with model: cart_item, url: cart_item_update_path(cart_item.id), method: :patch do |f| %>
@@ -31,7 +33,7 @@
           <%= cart_item.subtotal %>
         </th>
         <th>
-          <%= link_to '削除する', cart_item_destroy_path(cart_item.id), method: :delete %>
+          <%= link_to '削除する', cart_item_destroy_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
         </th>
       </tbody>
       <% end %>
