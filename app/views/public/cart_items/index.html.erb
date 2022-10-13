@@ -11,46 +11,63 @@
         <th>数量</th>
         <th>小計</th>
         <th></th>
-      </thead>
+      </tr>
+    </thead>
 
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
-        <th>
-          <%= image_tag cart_item.item.image, :size =>'100x100' %>
-          <%= cart_item.item.name %>
-        </th>
-        <th>
-          <%= cart_item.item.add_tax_price %>
-        </th>
-        <th>
-          <%= form_with model: cart_item, url: cart_item_update_path(cart_item.id), method: :patch do |f| %>
-            <%= f.hidden_field :amount, :value => cart_item.amount %>
-            <%= f.select :amount, *[1..10] %>
-            <%= f.submit '変更' %>
-          <% end %>
-        </th>
-        <th>
-          <%= cart_item.subtotal %>
-        </th>
-        <th>
-          <%= link_to '削除する', cart_item_destroy_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
-        </th>
-      </tbody>
-      <% end %>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+      <th>
+        <%= image_tag cart_item.item.image, :size =>'50x50' %>
+        <%= cart_item.item.name %>
+      </th>
+      <th>
+        <%= cart_item.item.add_tax_price %>
+      </th>
+      <th>
+        <%= form_with model: cart_item, url: cart_item_update_path(cart_item.id), method: :patch do |f| %>
+          <%= f.hidden_field :amount, :value => cart_item.amount %>
+          <%= f.select :amount, *[1..10] %>
+          <%= f.submit '変更', class: 'btn btn-success' %>
+        <% end %>
+      </th>
+      <th>
+        <%= cart_item.subtotal %>
+      </th>
+      <th>
+        <%= link_to '削除する', cart_item_destroy_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
+      </th>
+    </tbody>
+    <% end %>
     </thead>
   </table>
 
-  <div>
-    <%= link_to '買い物を続ける', items_path %>
-  </div>
-  <div>
-    <p>合計金額</p>
-    <% @cart_items.each do |cart_item| %>
-    <div>
-      <% @total += cart_item.subtotal %>
-      <%= @total %>
+  <div class="row">
+    <div class="col-lg-9">
+      <%= link_to '買い物を続ける', items_path, class: 'btn btn-primary' %>
     </div>
-    <%= link_to "情報入力に進む", orders_new_path %>
+    <div>
+    　<% @cart_items.each do |cart_item| %>
+        <% @total += cart_item.subtotal %>
+      <% end %>
+    </div>
+    <div class="col-lg-2">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="table-secondary">
+          <th>合計金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><%= @total %></th>
+        </tr>
+      </tbody>
+    </table>
+    </div>
   </div>
-  <% end %>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= link_to "情報入力に進む", orders_new_path, class: 'btn btn-success' %>
+    </div>
+  </div>
 </div>

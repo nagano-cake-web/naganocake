@@ -5,7 +5,7 @@
     <% @items.first(8).each do |item| %>
       <div>
         <%= link_to item_show_path(item.id) do %>
-          <%= image_tag item.get_image %>
+          <%= image_tag item.get_image, :size =>'200x200' %>
           <% end %>
         <%= item.name %>
         ￥<%= item.add_tax_price %>

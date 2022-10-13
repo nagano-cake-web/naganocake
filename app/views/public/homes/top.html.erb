@@ -13,7 +13,7 @@
     <div class="col-lg-3">
       <% @items.first(4).each do |item| %>
         <div>
-          <div><%= image_tag item.get_image %></div>
+          <div><%= image_tag item.get_image, :size =>'200x200' %></div>
           <div><%= item.name %></div>
           <div>￥<%= item.add_tax_price %></div>
         </div>

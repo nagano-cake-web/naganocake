@@ -1,0 +1,23 @@
+<div class="container px-5 px-sm-0">
+  <h2>注文情報確認</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-secondary">
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart| %>
+      <tr>
+        <th><%= order.item.name %></th>
+        <th><%= order.item.add_tax_price %></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

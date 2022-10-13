@@ -6,17 +6,36 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @customer = Customer.find(params[:id])
   end
 
   def create
-    order = Order.new(order_params)
-    order.save
-    redirect_to new_order_path(current_user.id)
+    cart_items = current_customer.cart_items.all
+    # ログインユーザーのカートアイテムをすべて取り出して cart_items に入れます
+    @order = current_customer.order.new(order_params)
+    # 渡ってきた値を @order に入れます
+    if @order.save
+    # ここに至るまでの間にチェックは済ませていますが、念の為IF文で分岐させています
+      cart_items.each do |cart|
+        order_detail = OrderDatail.new
+        order_detail.item_id = cart.item_id
+        order_detail.order_id = @order.id
+        order_detail.order_amount = cart.amount
+    # 購入が完了したらカート情報は削除するのでこちらに保存します
+        order_detail.order_price = cart.item.price
+    # カート情報を削除するので item との紐付けが切れる前に保存します
+        order_detail.save
+      end
+      redirect_to order_comfirm_path
+      cart_items.destroy_all
+      # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
+    else
+      @order = Order.new(order_params)
+      render :new
+    end
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order_detail = OrderDetail.all
     @order = Order.all
   end
 
@@ -39,7 +58,7 @@ class Public::OrdersController < ApplicationController
         order_item.total_payment = cart.item.price
         order_item.save
       end
-      redirect_to
+      redirect_to orders_comfirm_path
       cart_items.destroy_all
     else
       @order = Order.new(order_params)
