@@ -1,30 +1,42 @@
 <div class="container px-5 px-sm-0">
   <h1>商品詳細</h1>
-
   <div class="row">
+    <div class="col-lg-5">
     <% if @item.image.attached? %>
       <%= image_tag @item.image, size: "200×200" %>
     <% else %>
       <%= image_tag 'no_image', size: "200×200" %>
     <% end %>
+    </div>
+
+    <div class="col-lg-6">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre_id %></td>
+          </tr>
+          <tr>
+            <td>税込価格(税抜価格)</td>
+            <td><%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円</td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success' %>
+    </div>
   </div>
-  <div class="row">
-    <div>
-      <h4>商品名</h4>
-      <%= @item.name %>
-    </div>
-    <div>
-      <h4>商品説明</h4>
-      <%= @item.introduction %>
-    </div>
-    <div>
-      <h4>ジャンル</h4>
-      <%= @item.genre_id %>
-    </div>
-    <div>
-      <h4>税込価格（税抜価格）</h4>
-      <%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円
-    </div>
-  </div>
-  <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success' %>
 </div>

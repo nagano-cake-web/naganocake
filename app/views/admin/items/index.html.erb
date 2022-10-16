@@ -13,7 +13,7 @@
       <th><%= item.id %></th>
       <th>
         <%= link_to admin_item_path(item.id) do %>
-          <%= item.name %>
+          <div class="text-dark"><%= item.name %></div>
         <% end %>
         </th>
       <th><%= item.price %></th>

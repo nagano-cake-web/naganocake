@@ -1,24 +1,39 @@
 <div class="container px-5 px-sm-0">
 <h1>商品編集</h1>
-  <table class="table table-bordered">
-    <thead>
-      <tr class="table-secondary">
-        <th></th>
-      </tr>
-    </thead>
-  </table>
-<%= form_with model: @item, url: edit_admin_item_path(@item.id), method: :patch do |f| %>
-  <h4>商品画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <h4>商品名</h4>
-  <%= f.text_field :name %>
-  <h4>商品説明</h4>
-  <%= f.text_area :introduction %>
-  <h4>ジャンル</h4>
-  <%= f.collection_select(:genre_id, @items, :id, :name, prompt: '選択してください') %>
-  <h4>税抜価格</h4>
-  <%= f.text_field :price %>
-  <h4>販売ステータス</h4>
-  <%= f.submit "変更を保存", class: 'btn btn-success' %>
-<% end %>
+
+  <div class="row">
+    <table class="table table-borderless">
+      <%= form_with model: @item, url: edit_admin_item_path(@item.id), method: :patch do |f| %>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+           </tr>
+         </thead>
+        <tbody>
+          <tr>
+            <th>商品画像</th>
+            <th><%= f.file_field :image, accept: "image/*" %></th>
+          </tr>
+          <tr>
+            <th>商品名</th>
+            <th><%= f.text_field :name %></th>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <th><%= f.text_area :introduction %></th>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <th><%= f.collection_select(:genre_id, @items, :id, :name, prompt: '選択してください') %></th>
+          </tr>
+          <tr>
+            <th>税抜価格</th>
+           <th><%= f.text_field :price %>円</th>
+          </tr>
+        </tbody>
+    </table>
+      <%= f.submit "変更を保存", class: 'btn btn-success' %>
+      <% end %>
+  </div>
 </div>
