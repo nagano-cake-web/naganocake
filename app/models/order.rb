@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   belongs_to :customer
 
   enum payment_method: { credit_card: 0, transfer: 1 }
-  enum address_number: { customer_address: 0,  addresses: 1,  new_address: 2}
+  enum select_address: { customer_address: 0,  addresses: 1,  new_address: 2}
 
 
   def subtotal
