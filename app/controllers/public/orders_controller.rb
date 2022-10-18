@@ -37,6 +37,7 @@ class Public::OrdersController < ApplicationController
   def comfirm
      @order = Order.new(order_params)
      @cart_items = current_customer.cart_items
+     @order.shipping_cost = 800
     if params[:order][:select_address] == "1"
       @order.address = current_customer.address
     elsif params[:order][:select_address] == "2"
