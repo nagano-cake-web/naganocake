@@ -57,11 +57,13 @@
   <div class="row">
     <div>
       <h4>支払い方法</h4>
-
+      <%= @order.payment_method %>
     </div>
     <div>
       <h4>お届け先</h4>
+      〒<%= @order.postal_code %>
       <%= @order.address %>
+      <%= @order.name %>
     </div>
   </div>
 </div>
