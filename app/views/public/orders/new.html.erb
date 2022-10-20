@@ -28,20 +28,18 @@
     <div>
       <%= f.radio_button :select_address, "3" %>
       <%= f.label :address, "新しいお届け先" %>
-      <%= form_with model: @order do |f| %>
-        <div>
-          <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-          <%= f.text_field :postal_code %>
-        </div>
-        <div>
-          <%= f.label :address, "住所" %>
-          <%= f.text_field :address %>
-        </div>
-        <div>
-          <%= f.label :name, "宛名" %>
-          <%= f.text_field :name %>
-        </div>
-      <% end %>
+      <div>
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+        <%= f.text_field :postal_code %>
+      </div>
+      <div>
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address %>
+      </div>
+      <div>
+        <%= f.label :name, "宛名" %>
+        <%= f.text_field :name %>
+      </div>
     </div>
     <%= f.submit "確認画面へ進む" %>
   <% end %>

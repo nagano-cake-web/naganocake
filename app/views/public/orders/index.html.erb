@@ -15,7 +15,7 @@
       <tbody>
         <% @orders.each do |f| %>
         <tr>
-          <th><%= order.create_at %></th>
+          <th><%= @orders.create_at %></th>
           <th><%= order.address %></th>
           <th><%= order.name %></th>
           <th><%= order.total_payment %></th>
