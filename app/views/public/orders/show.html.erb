@@ -9,14 +9,12 @@
         <th>注文日</th>
         <th>配送先</th>
         <th>支払方法</th>
-        <th>ステータス</th>
       </tr>
       <tbody>
         <tr>
-          <th><%= @order.create_at %></th>
-          <th><%#= @order_detail.order.address %></th>
-          <th><%#= @order.payment_method %></th>
-          <th><%#= @order.status %></th>
+          <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+          <th><%= @order.address %></th>
+          <th><%= @order.payment_method %></th>
         </tr>
       </tbody>
     </thead>
@@ -31,10 +29,13 @@
         <th>ご請求額</th>
       </tr>
       <tbody>
+        <% @order_details.each do |order| %>
+          <% @total += order.subtotal %>
+        <% end %>
         <tr>
-          <th></th>
-          <th><%#= @order.shipping_cost %></th>
-          <th><%#= @order.total_payment %></th>
+          <th><%= @total %></th>
+          <th><%= @order.shipping_cost %></th>
+          <th><%= @order.total_payment %></th>
         </tr>
       </tbody>
     </thead>
@@ -50,14 +51,15 @@
         <th>小計</th>
       </tr>
       <tbody>
-        <%# @orders.each do |f| %>
+        <% @order_details.each do |order| %>
         <tr>
-          <th><%#= order.name %></th>
-          <th><%#= OrderDatails.add_tax_price %></th>
-          <th><%#= order.amount %></th>
-          <th><%#= order.subtotal %></th>
-          <%# end %>
+          <th><%= order.item.name %></th>
+          <th><%= order.item.add_tax_price %></th>
+          <th><%= order.amount %></th>
+          <th><%= order.subtotal %></th>
+          <% @total += order.subtotal %>
         </tr>
+        <% end %>
       </tbody>
     </thead>
   </table>

@@ -1,7 +1,9 @@
 class Public::OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    @customer = Customer.find(current_customer.id)
+    @orders = @customer.orders.all
+    @order = current_customer.orders.ids
   end
 
   def new
@@ -9,8 +11,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order_detail = OrderDetail.all
-    @order = Order.all
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
+    @total = 0
   end
 
   def create
@@ -59,7 +62,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-
   end
 
   private
@@ -68,4 +70,9 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:customers_id, :postal_code, :address, :name,
                                   :shipping_cost, :total_payment, :payment_method)
   end
+
+  def address_params
+    params.require(:order).permit(:name, :address, :postal_code)
+  end
+
 end
