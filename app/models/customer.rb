@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+  enum is_active: { true: 0, false: 1 }
+
   def active_for_authentication?
     super && (is_deleted == false)
   end
