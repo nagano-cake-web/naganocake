@@ -1,4 +1,14 @@
 <div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-lg-10">
+      <h2>商品一覧</h2>
+    </div>
+    <div class="col-lg-2">
+      <div class="text-right">
+        <%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
   <table class="table table-bordered">
     <thead>
       <tr class="table-secondary">
@@ -17,8 +27,9 @@
         <% end %>
         </th>
       <th><%= item.price %></th>
-      <th><%= item.genre_id %></th>
+      <th><%= item.genre.name %></th>
     </tbody>
     <% end %>
   </table>
+  <%= paginate @items %>
 </div>

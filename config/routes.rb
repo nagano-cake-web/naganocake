@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '' => 'homes#top'
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit]
+    patch '/items/:id' => 'items#update', as: 'update_item'
     resources :genres, only: [:index, :new, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show]

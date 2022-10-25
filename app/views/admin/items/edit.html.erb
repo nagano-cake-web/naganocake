@@ -3,7 +3,7 @@
 
   <div class="row">
     <table class="table table-borderless">
-      <%= form_with model: @item, url: edit_admin_item_path(@item.id), method: :patch do |f| %>
+      <%= form_with model: @item, url: admin_update_item_path(@item.id), method: :patch do |f| %>
         <thead>
           <tr>
             <th></th>

@@ -1,16 +1,18 @@
 <div class="container px-5 px-sm-0">
   <h2>商品一覧</h2>
 
-  <div class="">
+  <div class="row">
     <% @items.first(8).each do |item| %>
-      <div>
+      <div class="col-lg-3">
         <%= link_to item_show_path(item.id) do %>
-          <%= image_tag item.get_image, :size =>'200x200' %>
+          <%= image_tag item.get_image, :size =>'250x250' %>
           <% end %>
         <%= item.name %>
         ￥<%= item.add_tax_price %>
       </div>
     <% end %>
-    <%= paginate @item %>
+  </div>
+  <div class="row">
+    <%= paginate @items %>
   </div>
 </div>
