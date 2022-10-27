@@ -2,8 +2,8 @@
 <h1>商品編集</h1>
 
   <div class="row">
-    <table class="table table-borderless">
-      <%= form_with model: @item, url: admin_update_item_path(@item.id), method: :patch do |f| %>
+    <%= form_with model: @item, url: admin_update_item_path(@item.id), method: :patch do |f| %>
+      <table class="table table-borderless">
         <thead>
           <tr>
             <th></th>
@@ -32,8 +32,8 @@
            <th><%= f.text_field :price %>円</th>
           </tr>
         </tbody>
-    </table>
+      </table>
       <%= f.submit "変更を保存", class: 'btn btn-success' %>
-      <% end %>
+    <% end %>
   </div>
 </div>

@@ -18,8 +18,8 @@
         <th>ジャンル</th>
       </tr>
     </thead>
+    <% @items.each do |item| %>
     <tbody>
-      <% @items.each do |item| %>
       <th><%= item.id %></th>
       <th>
         <%= link_to admin_item_path(item.id) do %>

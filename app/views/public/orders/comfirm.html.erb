@@ -50,7 +50,11 @@
   <div class="row">
     <div>
       <h4>支払い方法</h4>
-      <%= @order.payment_method %>
+      <% if @order.payment_method == "credit_card" %>
+        クレジットカード
+      <% else %>
+        銀行振込
+      <% end %>
     </div>
     <div>
       <h4>お届け先</h4>
