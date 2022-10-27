@@ -39,37 +39,47 @@
   </div>
 
   <div class="row">
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <% @order_details.each do |order| %>
+    <div class="col-lg-8">
+      <table class="table table-borderless">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @order_details.each do |order| %>
+          <tbody>
+            <tr>
+              <td><%= order.item.name %></td>
+              <td><%= order.item.add_tax_price %></td>
+              <td><%= order.amount %></td>
+              <td><%= order.subtotal %></td>
+              <% @total += order.subtotal %>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="col-lg-3">
+      <table class="table table-borderless">
+        <thead class="thead-light">
+          <tr>
+            <th>商品合計</th>
+            <th>送料</th>
+            <th>請求金額合計</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <td><%= order.item.name %></td>
-            <td><%= order.item.add_tax_price %></td>
-            <td><%= order.amount %></td>
-            <td><%= cart_item.subtotal %></td>
-            <% @total += order.subtotal %>
+            <td><%= @total %></td>
+            <td><%= @order.shipping_cost %></td>
+            <td><%= @order.total_payment %></td>
           </tr>
         </tbody>
-      <% end %>
-    </table>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-3">
-    <%# @order.each do |order| %>
-    <p>商品合計<%#= Order_datails.item.subtotal %></p>
-    <%# @total += Order_datails.subtotal %>
-    <%# end %>
-    <p>送料<%= @order.shipping_cost %></p>
-    <p>請求金額合計</p>
+      </table>
     </div>
   </div>
 

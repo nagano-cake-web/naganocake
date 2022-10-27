@@ -8,7 +8,7 @@
 <div class="text-center">
 <%= link_to "退会しない", customer_show_path(current_customer), class: "btn btn-primary" %>
 <% if customer_signed_in? && @customer.id == current_customer.id %>
-  <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
+  <%= link_to "退会する", withdraw_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-danger" %>
 <% end %>
 </div>
 </div>

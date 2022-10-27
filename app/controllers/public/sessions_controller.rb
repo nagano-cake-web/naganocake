@@ -21,7 +21,7 @@ class Public::SessionsController < Devise::SessionsController
   # protected
 
   def after_sign_in_path_for(resource)
-    customer_show_path(current_customer.id)
+    root_path
   end
 
   def customer_state
