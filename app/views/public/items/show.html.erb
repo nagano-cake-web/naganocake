@@ -3,7 +3,7 @@
     <div class="col-lg-4">
       <%= image_tag @item.get_image %>
     </div>
-    <div class="co-lg-6">
+    <div class="co-lg-6　h-75">
       <%= form_with model: @cart_item, url: cart_item_create_path do |f| %>
       <%= f.hidden_field :item_id, :value => @item.id %>
       <%= f.hidden_field :customer_id, :value => @customer.id %>

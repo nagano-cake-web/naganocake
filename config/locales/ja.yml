@@ -1,20 +1,14 @@
 ja:
     enums:
+      customer:
+        is_deleted:
+          true: "無効"
+          false: "有効"
       order:
         payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
-ja:
-    enums:
-      order:
         address_number:
           customer_address: "ご自身の住所"
           addresses: "登録済み住所から選択"
           new_address: "新しいお届け先"
-
-ja:
-    enums:
-      customer:
-        is_active:
-          true: "有効"
-          false: "無効"

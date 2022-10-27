@@ -1,10 +1,14 @@
-<h2>本当に退会しますか？</h2>
+<div calss="container">
+<h2 class="text-center">本当に退会しますか？</h2>
 
-<p>退会すると、会員登録情報や</p>
-<p>これまでの購入履歴が閲覧できなくなります。</p>
-<p>退会する場合は、「退会する」をクリックしてください。</p>
+<p class="text-center">退会すると、会員登録情報や</p>
+<p class="text-center">これまでの購入履歴が閲覧できなくなります。</p>
+<p class="text-center">退会する場合は、「退会する」をクリックしてください。</p>
 
-<%= link_to "退会しない", customer_show_path(current_customer) %>
+<div class="text-center">
+<%= link_to "退会しない", customer_show_path(current_customer), class: "btn btn-primary" %>
 <% if customer_signed_in? && @customer.id == current_customer.id %>
-  <%= link_to "退会する", withdraw_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
+  <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
 <% end %>
+</div>
+</div>

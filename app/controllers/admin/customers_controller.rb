@@ -23,7 +23,7 @@ class Admin::CustomersController < ApplicationController
     params.require(:customer).permit(:id, :last_name, :last_name, :first_name,
                                      :last_name_kana, :first_name_kana, :email,
                                      :encrypted_password, :postal_code, :address,
-                                     :telephone_number, :is_active, :created_at,
+                                     :telephone_number, :is_deleted, :created_at,
                                      :updated_at)
   end
 

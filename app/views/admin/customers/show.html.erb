@@ -41,7 +41,13 @@
           </tr>
           <tr>
             <th>会員ステータス</th>
-            <th><%= @customer.is_active %></th>
+            <th>
+              <% if @customer.is_deleted %>
+                無効
+              <% else %>
+                有効
+              <% end %>
+            </th>
           </tr>
         </tbody>
       </table>
